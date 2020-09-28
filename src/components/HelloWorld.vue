@@ -7,11 +7,15 @@
     <ul>
       <li v-for="(fruit, index) of fruits" v-bind:key="index">
         <span v-if="fruit.color === 'green'">
-          {{index}} - {{fruit.name}} : {{fruit.color}}
+          {{index}} - <span class="fruitName">{{fruit.name}}</span> : {{fruit.color}}
         </span>
       </li>
     </ul>
 
+    <button @click="increm">Incremente !</button>
+    <button @click="decrem">Decremente !</button>
+
+    <p>{{compteur}}</p>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -50,6 +54,7 @@ export default {
   data() {
     return {
       age: 30,
+      compteur: 0,
       fruits: [
         {
           name: "apple",
@@ -64,12 +69,27 @@ export default {
           color: 'orange',
         }]
     }
+  },
+  methods: {
+    increm() {
+      this.compteur += 1;
+      console.log("Ciompteur + 1");
+    },
+    decrem() {
+      this.compteur -= 1;
+      console.log("Compteur - 1");
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.fruitName{
+  color: green;
+}
+
 h3 {
   margin: 40px 0 0;
 }
