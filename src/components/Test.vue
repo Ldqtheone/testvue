@@ -36,6 +36,7 @@
     <label for="githubPseudo">Pseudo GitHub : </label>
     <input type="text" v-model="githubPseudo" id="githubPseudo">
     <button @click="getGitInfos">GitHub</button>
+    <button @click="getGitInfosFetch">GitHub par Fetch</button>
 
     <br>
 
@@ -113,6 +114,19 @@ export default {
 
         this.resetValues();
       },
+      getGitInfosFetch() {
+        fetch(`https://api.github.com/users/` + this.githubPseudo)
+            .then((data) => data.json())
+            .then((users) => {
+              console.log(users);
+            })
+            .catch(error => {
+              this.errors.push(error);
+              this.errorMessage = error;
+        });
+
+        this.resetValues();
+      }
     }
 }
 </script>
