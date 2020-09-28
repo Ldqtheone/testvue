@@ -13,15 +13,16 @@
         </li>
       </ul>
 
-      <button @click="increm">Incremente !</button>
-      <button @click="decrem">Decremente !</button>
+      <button @click="increm">Incrémente !</button>
+      <button @click="decrem">Decrémente !</button>
     </div>
+
     <br>
+
     <div class="course">
       <label for="article"> Article à ajouter : </label>
       <input type="text" id="article" v-model="article" @keyup.enter="courseEdit(1)">
       <br>
-      <span class="errorMessage">{{errorMessage}}</span>
       <ul>
         <li v-for="(courseArticle, index) of courses" v-bind:key="index" @click="courseEdit(2, index)">
           {{index}} - <span> {{courseArticle}}</span>
@@ -29,10 +30,22 @@
       </ul>
       <button @click="courseEdit(1)">Ajouter</button>
     </div>
+
+    <br>
+
+    <label for="githubPseudo">Pseudo GitHub : </label>
+    <input type="text" v-model="githubPseudo" id="githubPseudo">
+    <button @click="getGitInfos">GitHub</button>
+
+    <br>
+
+    <span class="errorMessage">{{errorMessage}}</span>
   </div>
 </template>
 
 <script>
+
+import axios from 'axios'
 
 export default {
   name: "Test",
@@ -42,6 +55,8 @@ export default {
       article: "",
       errorMessage: "",
       courses: [],
+      githubPseudo: "",
+      errors: [],
       fruits: [
         {
           name: "apple",
@@ -59,34 +74,45 @@ export default {
     },
     methods: {
       increm() {
-        this.age ++;
+        this.age++;
         console.log("Compteur + 1");
       },
 
       decrem() {
-        this.age --;
+        this.age--;
         console.log("Compteur - 1");
       },
 
       courseEdit(action, index = 0) {
-        if(action === 1){
-          if(this.article !== "") {
+        if (action === 1) {
+          if (this.article !== "") {
             this.courses.push(this.article);
             this.resetValues();
-          }
-          else{
+          } else {
             this.errorMessage = "Vous devez renseigner un article !";
           }
-        }
-        else{
+        } else {
           this.courses.splice(index, 1);
           this.resetValues();
         }
       },
-      resetValues(){
+      resetValues() {
         this.article = "";
         this.errorMessage = "";
-      }
+        this.githubPseudo = "";
+      },
+      getGitInfos() {
+        axios.get(`https://api.github.com/users/` + this.githubPseudo)
+            .then(response => {
+              console.log(response.data);
+            })
+            .catch(e => {
+              this.errors.push(e);
+              this.errorMessage = e;
+            })
+
+        this.resetValues();
+      },
     }
 }
 </script>
