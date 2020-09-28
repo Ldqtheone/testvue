@@ -120,10 +120,10 @@ export default {
             .then((users) => {
               console.log(users);
             })
-            .catch(error => {
-              this.errors.push(error);
-              this.errorMessage = error;
-        });
+            .catch(e => {
+              this.errors.push(e);
+              this.errorMessage = e;
+        })
 
         this.resetValues();
       }
