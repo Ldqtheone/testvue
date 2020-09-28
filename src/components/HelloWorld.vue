@@ -1,6 +1,15 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <input v-model="age">
+    <h1 v-if="age <= 30">{{ age }} et je suis invisible</h1>
+    <h1 v-else>{{ age }} et je m'appelle Brian !</h1>
+
+    <ul>
+      <li v-for="(nom, index) of noms" v-bind:key="index">
+        {{index}} - {{nom}}
+      </li>
+    </ul>
+
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -35,6 +44,12 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      age: 30,
+      noms: ['Brian','Andre','Antony','CoCo L\'abricoto']
+    }
   }
 }
 </script>

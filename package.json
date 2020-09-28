@@ -9,7 +9,12 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-moment": "^4.1.0",
+    "vue-router": "^3.4.5",
+    "bootstrap-vue": "^2.17.3",
+    "vuex": "^3.5.1",
+    "axios": "^0.20.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -38,5 +43,7 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "_id": "testvue@0.1.0",
+  "readme": "ERROR: No README data found!"
 }
