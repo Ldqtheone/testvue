@@ -16,8 +16,7 @@ export default {
   data() {
     return {
       githubPseudo: "",
-      errors : [],
-      errorMessage: ""
+      errors : []
     }
   },
   methods: {
@@ -28,10 +27,11 @@ export default {
           })
           .catch(e => {
             this.errors.push(e);
-            this.errorMessage = e;
+            this.$store.commit('displayError', e)
+
           })
 
-      this.errorMessage = "";
+      this.$store.commit('resetErrors')
       this.githubPseudo = "";
     },
     getGitInfosFetch() {
@@ -42,10 +42,11 @@ export default {
           })
           .catch(e => {
             this.errors.push(e);
-            this.errorMessage = e;
+            this.$store.commit('displayError', e)
+
           })
 
-      this.errorMessage = "";
+      this.$store.commit('resetErrors')
       this.githubPseudo = "";
     }
   }

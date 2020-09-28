@@ -30,12 +30,12 @@ name: "Courses",
           this.article = "";
           this.errorMessage = "";
         } else {
-          this.errorMessage = "Vous devez renseigner un article !";
+          this.$store.commit('displayError', "Vous devez renseigner un article !")
         }
       } else {
         this.courses.splice(index, 1);
         this.article = "";
-        this.errorMessage = "";
+        this.$store.commit('resetErrors')
       }
     }
   }
