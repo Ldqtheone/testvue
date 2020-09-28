@@ -1,8 +1,8 @@
 <template>
   <div class="hello">
     <input v-model="age">
-    <h1 v-if="age <= 30">{{ age }} et je suis invisible</h1>
-    <h1 v-else>{{ age }} et je m'appelle Brian !</h1>
+    <h1 v-if="age <= 29">J'ai {{ age }} ans et je suis jeune</h1>
+    <h1 v-else>J'ai {{ age }} ans et je m'appelle Antony !</h1>
 
     <ul>
       <li v-for="(fruit, index) of fruits" v-bind:key="index">
@@ -15,7 +15,6 @@
     <button @click="increm">Incremente !</button>
     <button @click="decrem">Decremente !</button>
 
-    <p>{{compteur}}</p>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -54,7 +53,6 @@ export default {
   data() {
     return {
       age: 30,
-      compteur: 0,
       fruits: [
         {
           name: "apple",
@@ -72,11 +70,11 @@ export default {
   },
   methods: {
     increm() {
-      this.compteur += 1;
-      console.log("Ciompteur + 1");
+      this.age ++;
+      console.log("Compteur + 1");
     },
     decrem() {
-      this.compteur -= 1;
+      this.age --;
       console.log("Compteur - 1");
     }
   }
