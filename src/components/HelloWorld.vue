@@ -5,8 +5,10 @@
     <h1 v-else>{{ age }} et je m'appelle Brian !</h1>
 
     <ul>
-      <li v-for="(nom, index) of noms" v-bind:key="index">
-        {{index}} - {{nom}}
+      <li v-for="(fruit, index) of fruits" v-bind:key="index">
+        <span v-if="fruit.color === 'green'">
+          {{index}} - {{fruit.name}} : {{fruit.color}}
+        </span>
       </li>
     </ul>
 
@@ -48,7 +50,19 @@ export default {
   data() {
     return {
       age: 30,
-      noms: ['Brian','Andre','Antony','CoCo L\'abricoto']
+      fruits: [
+        {
+          name: "apple",
+          color: 'green',
+        },
+        {
+          name: "pear",
+          color: 'green',
+        },
+        {
+          name: "orange",
+          color: 'orange',
+        }]
     }
   }
 }
