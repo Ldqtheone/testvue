@@ -1,6 +1,5 @@
 <template>
   <div id="home">
-    <h1> {{msg}} </h1>
     <Compteur />
     <Courses />
     <GitHub />
@@ -22,9 +21,6 @@ import axios from "axios";
 
 export default {
   name: "Home",
-  props: {
-    msg: String
-  },
   data() {
     return {
       films: []
