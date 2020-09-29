@@ -11,5 +11,9 @@ export default {
 </script>
 
 <style scoped>
-
+  .errorMessage{
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+  }
 </style>

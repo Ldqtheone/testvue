@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import App from './App.vue';
+import AsyncComputed from 'vue-async-computed';
 import { store } from './store/store'
 
+Vue.use(AsyncComputed)
 
 Vue.config.productionTip = false;
 

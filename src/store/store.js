@@ -5,19 +5,23 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        errorMessage: ""
+        errorMessage: "",
+        article: "",
+        githubPseudo: ""
     },
     mutations: {
         displayError(state, errorMessage) {
             state.errorMessage = errorMessage
         },
-        resetErrors(state) {
-            state.errorMessage = ""
+        resetValues(state) {
+            state.errorMessage = "";
+            state.article = "";
+            state.githubPseudo = "";
         }
     },
     getters: {
-        errorMessage: state => state.errorMessage
+        errorMessage: state => state.errorMessage,
+        article: state => state.article,
+        githubPseudo: state => state.githubPseudo
     }
 });
-
-console.log(store.state.errorMessage) // -> 1

@@ -19,7 +19,6 @@ name: "Courses",
     return {
       article: "",
       courses: [],
-      errorMessage: ""
     }
   },
   methods: {
@@ -27,15 +26,14 @@ name: "Courses",
       if (action === 1) {
         if (this.article !== "") {
           this.courses.push(this.article);
-          this.article = "";
-          this.errorMessage = "";
-        } else {
-          this.$store.commit('displayError', "Vous devez renseigner un article !")
+          this.$store.commit('resetValues');
+        }
+        else {
+          this.$store.commit('displayError', "Vous devez renseigner un article !");
         }
       } else {
         this.courses.splice(index, 1);
-        this.article = "";
-        this.$store.commit('resetErrors')
+        this.$store.commit('resetValues')
       }
     }
   }

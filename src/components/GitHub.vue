@@ -31,8 +31,7 @@ export default {
 
           })
 
-      this.$store.commit('resetErrors')
-      this.githubPseudo = "";
+      this.$store.commit('resetValues')
     },
     getGitInfosFetch() {
       fetch(`https://api.github.com/users/` + this.githubPseudo)
@@ -46,8 +45,7 @@ export default {
 
           })
 
-      this.$store.commit('resetErrors')
-      this.githubPseudo = "";
+      this.$store.commit('resetValues')
     }
   }
 }
