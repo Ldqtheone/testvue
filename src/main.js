@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import AsyncComputed from 'vue-async-computed';
-import { store } from './store/index'
+import { store } from '@/store'
 
 Vue.use(AsyncComputed)
 
