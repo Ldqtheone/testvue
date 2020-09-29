@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        errorMessage: ""
+        errorMessage: "",
+        city: "Rennes"
     },
     mutations: {
         displayError(state, errorMessage) {
