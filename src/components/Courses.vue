@@ -26,14 +26,16 @@ name: "Courses",
       if (action === 1) {
         if (this.article !== "") {
           this.courses.push(this.article);
-          this.$store.commit('resetValues');
+          this.article = "";
+          this.$store.commit('resetErrors');
         }
         else {
           this.$store.commit('displayError', "Vous devez renseigner un article !");
         }
       } else {
         this.courses.splice(index, 1);
-        this.$store.commit('resetValues')
+        this.article = "";
+        this.$store.commit('resetErrors')
       }
     }
   }

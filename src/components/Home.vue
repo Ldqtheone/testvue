@@ -27,7 +27,7 @@ export default {
   },
   data() {
     return {
-      films: [],
+      films: []
     }
   },
   components: {
@@ -42,15 +42,16 @@ export default {
   },
   methods: {
     getFilmsTitles() {
-      axios.get('https://pifogroup-7b34b.firebaseio.com/users-new.json')
+      axios.get('https://api.github.com/users/Ldqtheone')
           .then(response => {
-            this.films = response.data;
+            this.films.push(response.data);
+            console.log(this.films);
           })
           .catch(e => {
             this.errors.push(e);
             this.$store.commit('displayError', e)
-          });
-      this.$store.commit('resetValues');
+          })
+      this.$store.commit('resetErrors');
     }
   }
 }
